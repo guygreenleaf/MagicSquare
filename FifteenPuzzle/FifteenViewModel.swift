@@ -7,19 +7,16 @@
 
 import Foundation
 
-class FifteenViewModel{
+class FifteenViewModel: ObservableObject{
     
-    enum bigPiper {
-        case isInt(Int)
-        case isGreater(String)
-    }
+
     //Bridge between model and view
     
     
-    var gameModel = FifteenModel()
+    @Published var gameModel = FifteenModel()
     
     init(){
-        gameModel.createGameFor()
+        gameModel.createGameFor( rows: 4, columns: 4 )
     }
     
     func gameSize() -> (rows: Int, columns: Int){
@@ -29,12 +26,97 @@ class FifteenViewModel{
     func getGamePiece() -> Int{
         return gameModel.getGameCells
     }
+    
+    func didTapCell(row: Int, col: Int) {
+        print("View: Tapped a \(gameModel.getCellType(row: row, col: col))")
+        
+    }
+    
+    func getCell(row: Int, col: Int) -> BoardCell{
+        return gameModel.gameBoard[row][col]
+    }
+    
+    func getCellNum(row:Int, col:Int)->Int{
+        return gameModel.gameBoard[row][col].cellNumber
+    }
+    
+    func shuffleCells(){
 
-    func gamePiece() -> Int{
-        gameModel.getGameCells  += 1
-        if(gameModel.getGameCells < 16){
-            return gameModel.getGameCells
+        let numShuffles:Int = 25
+        
+//        for shuffle in 0...numShuffles{
+//            let randNumber = Int.random(in: 0..<4)
+            var oldSpace = gameModel.gameBoard[2][2]
+//            var newSpace = gameModel.gameBoard[3][3]
+            gameModel.gameBoard[2][2] = gameModel.gameBoard[3][3]
+        gameModel.gameBoard[3][3] = oldSpace
+            
+//        }
+    }
+    
+    func resetCells(){
+        let resetNum = 3
+        var initNums = 1
+        for resets in 0...resetNum{
+            for swaps in 0...resetNum{
+                gameModel.gameBoard[resets][swaps].cellNumber = initNums
+                gameModel.gameBoard[resets][swaps].cellType = CellType.fifteenCell(number: initNums)
+                initNums += 1
+                if(initNums == 17){
+                    gameModel.gameBoard[3][3].cellType = CellType.freeCell
+                }
+            }
         }
-        return 16
+    }
+    //When a cell is tapped, checks in all directions to see if a free cell is available to switch with
+    func checkCell(row:Int, col:Int){
+        if(col != 3){
+            let checkRightcell = gameModel.gameBoard[row][col+1].cellType
+            if case .freeCell = checkRightcell{
+
+                let currentCell = gameModel.gameBoard[row][col]
+                let freeCell = gameModel.gameBoard[row][col+1]
+                gameModel.gameBoard[row][col] = freeCell
+                gameModel.gameBoard[row][col+1] = currentCell
+                print("moved cell into free space!")
+            }
+        }
+        if(col != 0){
+            let checkLeftCell = gameModel.gameBoard[row][col-1].cellType
+            if case .freeCell = checkLeftCell{
+                let currentCell = gameModel.gameBoard[row][col]
+                let freeCell = gameModel.gameBoard[row][col-1]
+                gameModel.gameBoard[row][col] = freeCell
+                gameModel.gameBoard[row][col-1] = currentCell
+                print("moved cell into free space!")
+            }
+        }
+        if(row != 3){
+            let checkBottomCell = gameModel.gameBoard[row+1][col].cellType
+            if case .freeCell = checkBottomCell{
+                let currentCell = gameModel.gameBoard[row][col]
+                let freeCell = gameModel.gameBoard[row+1][col]
+                gameModel.gameBoard[row][col] = freeCell
+                gameModel.gameBoard[row+1][col] = currentCell
+                print("moved cell into free space!")
+            }
+        }
+        if(row != 0){
+            let checkTopCell = gameModel.gameBoard[row-1][col].cellType
+            if case .freeCell = checkTopCell{
+                let currentCell = gameModel.gameBoard[row][col]
+                let freeCell = gameModel.gameBoard[row-1][col]
+                gameModel.gameBoard[row][col] = freeCell
+                gameModel.gameBoard[row-1][col] = currentCell
+                print("moved cell into free space!")
+            }
+        }
+   
+    }
+    
+    func gamePiece() -> Int{
+        let pieceNum = gameModel.getGameCells
+        gameModel.getGameCells  += 1
+        return pieceNum
     }
 }

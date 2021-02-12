@@ -3,4 +3,191 @@
    uuid = "8AE96062-B3F9-4DFC-AFDC-E04190043F40"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6E9C5C1F-6C9F-4508-8B59-208140CC051C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FifteenPuzzle/FifteenViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "checkCell(row:col:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C8D0F87E-75C9-453D-8EE7-D404E7FF39DA"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FifteenPuzzle/FifteenViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "FifteenViewModel"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "C8D0F87E-75C9-453D-8EE7-D404E7FF39DA - 993924d4ec2dff58"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "property wrapper backing initializer of FifteenPuzzle.FifteenViewModel.gameModel : FifteenPuzzle.FifteenModel"
+                  moduleName = "FifteenPuzzle"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/guygreenleaf/Desktop/SSU/cs415/FifteenPuzzle/FifteenPuzzle/FifteenViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "28">
+               </Location>
+               <Location
+                  uuid = "C8D0F87E-75C9-453D-8EE7-D404E7FF39DA - 697d3ce4a238ca43"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FifteenPuzzle.FifteenViewModel.gameModel.getter : FifteenPuzzle.FifteenModel"
+                  moduleName = "FifteenPuzzle"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/guygreenleaf/Desktop/SSU/cs415/FifteenPuzzle/FifteenPuzzle/FifteenViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "177">
+               </Location>
+               <Location
+                  uuid = "C8D0F87E-75C9-453D-8EE7-D404E7FF39DA - 339b24a1d60e625f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FifteenPuzzle.FifteenViewModel.gameModel.setter : FifteenPuzzle.FifteenModel"
+                  moduleName = "FifteenPuzzle"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/guygreenleaf/Desktop/SSU/cs415/FifteenPuzzle/FifteenPuzzle/FifteenViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "165">
+               </Location>
+               <Location
+                  uuid = "C8D0F87E-75C9-453D-8EE7-D404E7FF39DA - 1805f8cf2ae1465c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FifteenPuzzle.FifteenViewModel.gameModel.modify : FifteenPuzzle.FifteenModel"
+                  moduleName = "FifteenPuzzle"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/guygreenleaf/Desktop/SSU/cs415/FifteenPuzzle/FifteenPuzzle/FifteenViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "52">
+               </Location>
+               <Location
+                  uuid = "C8D0F87E-75C9-453D-8EE7-D404E7FF39DA - 53c59018b845e29f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FifteenPuzzle.FifteenViewModel.gameModel.modify : FifteenPuzzle.FifteenModel with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "FifteenPuzzle"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/guygreenleaf/Desktop/SSU/cs415/FifteenPuzzle/FifteenPuzzle/FifteenViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "34">
+               </Location>
+               <Location
+                  uuid = "C8D0F87E-75C9-453D-8EE7-D404E7FF39DA - bcc8a3d9936fdb1d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FifteenPuzzle.FifteenViewModel.$gameModel.getter : Combine.Published&lt;FifteenPuzzle.FifteenModel&gt;.Publisher"
+                  moduleName = "FifteenPuzzle"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/guygreenleaf/Desktop/SSU/cs415/FifteenPuzzle/FifteenPuzzle/FifteenViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "110">
+               </Location>
+               <Location
+                  uuid = "C8D0F87E-75C9-453D-8EE7-D404E7FF39DA - c93b14854accc3e9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FifteenPuzzle.FifteenViewModel.$gameModel.setter : Combine.Published&lt;FifteenPuzzle.FifteenModel&gt;.Publisher"
+                  moduleName = "FifteenPuzzle"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/guygreenleaf/Desktop/SSU/cs415/FifteenPuzzle/FifteenPuzzle/FifteenViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "233">
+               </Location>
+               <Location
+                  uuid = "C8D0F87E-75C9-453D-8EE7-D404E7FF39DA - 8830abaa5855438f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FifteenPuzzle.FifteenViewModel.$gameModel.modify : Combine.Published&lt;FifteenPuzzle.FifteenModel&gt;.Publisher"
+                  moduleName = "FifteenPuzzle"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/guygreenleaf/Desktop/SSU/cs415/FifteenPuzzle/%3Ccompiler-generated%3E"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "53">
+               </Location>
+               <Location
+                  uuid = "C8D0F87E-75C9-453D-8EE7-D404E7FF39DA - 8b076ce0c937c5a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FifteenPuzzle.FifteenViewModel.$gameModel.modify : Combine.Published&lt;FifteenPuzzle.FifteenModel&gt;.Publisher with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "FifteenPuzzle"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/guygreenleaf/Desktop/SSU/cs415/FifteenPuzzle/FifteenPuzzle/FifteenViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "17">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EF0A0498-6B68-48A7-A5DC-AB59D1EE09E6"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FifteenPuzzle/ContentView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "buildCell(rowID:columns:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
