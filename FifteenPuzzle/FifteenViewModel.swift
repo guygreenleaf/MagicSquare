@@ -40,16 +40,112 @@ class FifteenViewModel: ObservableObject{
         return gameModel.gameBoard[row][col].cellNumber
     }
     
-    func shuffleCells(){
-
-        let numShuffles:Int = 25
+    func findFreeCell()->(Int, Int){
+        for rows in 0...3 {
+            for cols in 0...3 {
+                let checkCell = gameModel.gameBoard[rows][cols].cellType
+                
+                if case .freeCell = checkCell {
+                    return (rows, cols)
+                }
+            }
+        }
+    return (0, 0)
+    }
+    
+    func randSpace(row:Int, col:Int){
+        let randInt:Int = Int.random(in: 1...4)
         
-//        for shuffle in 0...numShuffles{
-//            let randNumber = Int.random(in: 0..<4)
-            var oldSpace = gameModel.gameBoard[2][2]
-//            var newSpace = gameModel.gameBoard[3][3]
-            gameModel.gameBoard[2][2] = gameModel.gameBoard[3][3]
-        gameModel.gameBoard[3][3] = oldSpace
+        if(randInt == 1 && row != 0){
+            let checkUpCell = gameModel.gameBoard[row-1][col].cellType
+            if case .fifteenCell = checkUpCell{
+                let currentFreeCell = gameModel.gameBoard[row][col]
+                let cellToSwap = gameModel.gameBoard[row-1][col]
+                gameModel.gameBoard[row][col] = cellToSwap
+                gameModel.gameBoard[row-1][col] = currentFreeCell
+            }
+        }
+        else if(randInt == 2 && row != 3){
+            let checkBottomCell = gameModel.gameBoard[row+1][col].cellType
+            if case .fifteenCell = checkBottomCell{
+                let currentFreeCell = gameModel.gameBoard[row][col]
+                let cellToSwap = gameModel.gameBoard[row+1][col]
+                gameModel.gameBoard[row][col] = cellToSwap
+                gameModel.gameBoard[row+1][col] = currentFreeCell
+            }
+        }
+        else if(randInt == 3 && col != 0){
+            let checkLeftCell = gameModel.gameBoard[row][col-1].cellType
+            if case .fifteenCell = checkLeftCell{
+                let currentFreeCell = gameModel.gameBoard[row][col]
+                let cellToSwap = gameModel.gameBoard[row][col-1]
+                gameModel.gameBoard[row][col] = cellToSwap
+                gameModel.gameBoard[row][col-1] = currentFreeCell
+            }
+        }
+        else if(randInt == 4 && col != 3){
+            let checkRightCell = gameModel.gameBoard[row][col+1].cellType
+            if case .fifteenCell = checkRightCell{
+                let currentFreeCell = gameModel.gameBoard[row][col]
+                let cellToSwap = gameModel.gameBoard[row][col+1]
+                gameModel.gameBoard[row][col] = cellToSwap
+                gameModel.gameBoard[row][col+1] = currentFreeCell
+        }
+    }
+        
+    }
+
+    
+    func shuffleCells(){
+        
+        
+        var numShuffles:Int = 0
+        let numTimesToShuffle:Int = Int.random(in: 45...75)
+        
+        while numShuffles != numTimesToShuffle {
+            let randMovementNum = Int.random(in: 1...4)
+            
+            if(randMovementNum == 1){
+                var currFreeSpace = findFreeCell()
+                randSpace(row: currFreeSpace.0, col: currFreeSpace.1)
+                
+                
+                numShuffles += 1
+            }
+            else if(randMovementNum == 2){
+                var currFreeSpace = findFreeCell()
+                randSpace(row: currFreeSpace.0, col: currFreeSpace.1)
+
+                
+                numShuffles += 1
+            }
+            
+            else if(randMovementNum == 3){
+                var currFreeSpace = findFreeCell()
+                randSpace(row: currFreeSpace.0, col: currFreeSpace.1)
+
+                
+                numShuffles += 1
+            }
+            else if(randMovementNum == 4){
+                var currFreeSpace = findFreeCell()
+                randSpace(row: currFreeSpace.0, col: currFreeSpace.1)
+
+                
+                numShuffles += 1
+            }
+            
+        }
+        
+        
+        
+        
+////        for shuffle in 0...numShuffles{
+////            let randNumber = Int.random(in: 0..<4)
+//            var oldSpace = gameModel.gameBoard[2][2]
+////            var newSpace = gameModel.gameBoard[3][3]
+//            gameModel.gameBoard[2][2] = gameModel.gameBoard[3][3]
+//        gameModel.gameBoard[3][3] = oldSpace
             
 //        }
     }

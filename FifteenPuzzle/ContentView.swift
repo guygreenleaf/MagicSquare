@@ -15,7 +15,6 @@ struct ContentView: View {
     @ObservedObject var viewModel = FifteenViewModel()
     //2d array to hold the gameboard
     
-    
     var body: some View {
 
         ZStack{
@@ -39,6 +38,7 @@ struct ContentView: View {
             .border(Color.blue, width: 5)
             .cornerRadius(10)
             .onTapGesture {
+                viewModel.resetCells()
                 viewModel.shuffleCells()
             }
             Text("Reset")
@@ -88,9 +88,12 @@ struct ContentView: View {
         let bigTest = viewModel.getCell(row: rowID, col: columns)
         return  ZStack{
 
-            RoundedRectangle(cornerRadius:
-                                cornerRadiusForCell).foregroundColor(Color.blue)
+            RoundedRectangle(cornerRadius:cornerRadiusForCell)
+                
+                .foregroundColor(Color.blue)
+            
             RoundedRectangle(cornerRadius: cornerRadiusForCell).stroke(lineWidth: strokeLineWidth)
+            
             bigTest.cellNumber != 16 ? Text(String(bigTest.cellNumber)) : Text("")
         }
         .font(Font.headline)
