@@ -45,6 +45,12 @@ struct FifteenModel{
     }
     
 }
+
+
+
+
+
+
 enum CellType {
     case fifteenCell(number: Int)
     case freeCell

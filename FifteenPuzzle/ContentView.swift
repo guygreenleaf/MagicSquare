@@ -60,6 +60,7 @@ struct ContentView: View {
         return VStack {
             ForEach(0..<rows, content: { idx in
                 return buildGameRow(rowID: idx, columns: columns)
+                
             })
         }
     }
@@ -69,9 +70,11 @@ struct ContentView: View {
         return HStack{
             ForEach(0..<columns) {idx in
                 buildCell(rowID: rowID, columns: idx)
+                    .animation(.spring())
                     .onTapGesture {
                         viewModel.didTapCell(row: rowID , col: idx)
                     }
+                    
             }
 
         }
@@ -88,13 +91,15 @@ struct ContentView: View {
             RoundedRectangle(cornerRadius:
                                 cornerRadiusForCell).foregroundColor(Color.blue)
             RoundedRectangle(cornerRadius: cornerRadiusForCell).stroke(lineWidth: strokeLineWidth)
-//            viewModel.getGamePiece() != 16 ? Text(String(viewModel.gamePiece())) : Text("")
             bigTest.cellNumber != 16 ? Text(String(bigTest.cellNumber)) : Text("")
         }
         .font(Font.headline)
         .onTapGesture {
              viewModel.checkCell(row: rowID, col: columns)
+            
+            
         }
+
 
     }
     

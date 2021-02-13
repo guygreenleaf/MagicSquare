@@ -78,7 +78,7 @@ class FifteenViewModel: ObservableObject{
                 let freeCell = gameModel.gameBoard[row][col+1]
                 gameModel.gameBoard[row][col] = freeCell
                 gameModel.gameBoard[row][col+1] = currentCell
-                print("moved cell into free space!")
+//                print("moved cell into free space!")
             }
         }
         if(col != 0){
@@ -88,7 +88,7 @@ class FifteenViewModel: ObservableObject{
                 let freeCell = gameModel.gameBoard[row][col-1]
                 gameModel.gameBoard[row][col] = freeCell
                 gameModel.gameBoard[row][col-1] = currentCell
-                print("moved cell into free space!")
+//                print("moved cell into free space!")
             }
         }
         if(row != 3){
@@ -98,7 +98,7 @@ class FifteenViewModel: ObservableObject{
                 let freeCell = gameModel.gameBoard[row+1][col]
                 gameModel.gameBoard[row][col] = freeCell
                 gameModel.gameBoard[row+1][col] = currentCell
-                print("moved cell into free space!")
+//                print("moved cell into free space!")
             }
         }
         if(row != 0){
@@ -108,7 +108,7 @@ class FifteenViewModel: ObservableObject{
                 let freeCell = gameModel.gameBoard[row-1][col]
                 gameModel.gameBoard[row][col] = freeCell
                 gameModel.gameBoard[row-1][col] = currentCell
-                print("moved cell into free space!")
+//                print("moved cell into free space!")
             }
         }
    
