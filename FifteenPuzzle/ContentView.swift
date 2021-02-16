@@ -12,36 +12,25 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @State private var dragAmnt = CGSize.zero
+    
     @ObservedObject var viewModel = FifteenViewModel()
     //2d array to hold the gameboard
     
     var body: some View {
 
-        ZStack{
-            Image("Misty")
-                .resizable()
-                .edgesIgnoringSafeArea(.all)
-        buildGameView(rows: viewModel.gameSize().rows, columns: viewModel.gameSize().columns)
-            .padding()
-            
 
-      
-        }
+//        Image("Misty")
+//            .resizable()
+//            .edgesIgnoringSafeArea(.all)
+        VStack{
 
-        HStack{
-        Text("Shuffle")
-            .fontWeight(.bold)
-            .font(.title)
+            buildGameView(rows: viewModel.gameSize().rows, columns: viewModel.gameSize().columns)
+            .animation(.spring())
             .padding()
-            .background(Color.blue)
-            .foregroundColor(.white)
-            .border(Color.blue, width: 5)
-            .cornerRadius(10)
-            .onTapGesture {
-                viewModel.resetCells()
-                viewModel.shuffleCells()
-            }
-            Text("Reset")
+                
+            HStack{
+            Text("Shuffle")
                 .fontWeight(.bold)
                 .font(.title)
                 .padding()
@@ -50,9 +39,25 @@ struct ContentView: View {
                 .border(Color.blue, width: 5)
                 .cornerRadius(10)
                 .onTapGesture {
-                    viewModel.resetCells()
+                    
+                    viewModel.shuffleCells()
                 }
+                Text("Reset")
+                    .fontWeight(.bold)
+                    .font(.title)
+                    .padding()
+                    .background(Color.blue)
+                    .foregroundColor(.white)
+                    .border(Color.blue, width: 5)
+                    .cornerRadius(10)
+                    .onTapGesture {
+                        viewModel.resetCells()
+                    }
+            }
         }
+        .background(Image("Misty"))
+
+
     }
     
     
@@ -60,6 +65,7 @@ struct ContentView: View {
         return VStack {
             ForEach(0..<rows, content: { idx in
                 return buildGameRow(rowID: idx, columns: columns)
+ 
                 
             })
         }
@@ -70,10 +76,12 @@ struct ContentView: View {
         return HStack{
             ForEach(0..<columns) {idx in
                 buildCell(rowID: rowID, columns: idx)
-                    .animation(.spring())
+
                     .onTapGesture {
                         viewModel.didTapCell(row: rowID , col: idx)
-                    }
+                        
+                            
+                                           }
                     
             }
 
@@ -88,15 +96,18 @@ struct ContentView: View {
         let bigTest = viewModel.getCell(row: rowID, col: columns)
         return  ZStack{
 
-            RoundedRectangle(cornerRadius:cornerRadiusForCell)
-                
+             RoundedRectangle(cornerRadius:cornerRadiusForCell)
+                .frame(width:90, height: 90)
+
                 .foregroundColor(Color.blue)
-            
-            RoundedRectangle(cornerRadius: cornerRadiusForCell).stroke(lineWidth: strokeLineWidth)
-            
+                .border(Color.black, width:3.5)
+                .cornerRadius(5)
+                
+  
             bigTest.cellNumber != 16 ? Text(String(bigTest.cellNumber)) : Text("")
         }
         .font(Font.headline)
+        
         .onTapGesture {
              viewModel.checkCell(row: rowID, col: columns)
             
@@ -106,13 +117,15 @@ struct ContentView: View {
 
     }
     
-    
-    let cornerRadiusForCell: CGFloat = 10.0
-    let strokeLineWidth : CGFloat = 1.0
+
+
 }
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }
 }
+var cornerRadiusForCell: CGFloat = 10.0
+let strokeLineWidth : CGFloat = 1.0

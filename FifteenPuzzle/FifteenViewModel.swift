@@ -100,20 +100,20 @@ class FifteenViewModel: ObservableObject{
         
         
         var numShuffles:Int = 0
-        let numTimesToShuffle:Int = Int.random(in: 45...75)
+        let numTimesToShuffle:Int = Int.random(in: 150...300)
         
         while numShuffles != numTimesToShuffle {
             let randMovementNum = Int.random(in: 1...4)
             
             if(randMovementNum == 1){
-                var currFreeSpace = findFreeCell()
+                let currFreeSpace = findFreeCell()
                 randSpace(row: currFreeSpace.0, col: currFreeSpace.1)
                 
                 
                 numShuffles += 1
             }
             else if(randMovementNum == 2){
-                var currFreeSpace = findFreeCell()
+                let currFreeSpace = findFreeCell()
                 randSpace(row: currFreeSpace.0, col: currFreeSpace.1)
 
                 
@@ -121,14 +121,14 @@ class FifteenViewModel: ObservableObject{
             }
             
             else if(randMovementNum == 3){
-                var currFreeSpace = findFreeCell()
+                let currFreeSpace = findFreeCell()
                 randSpace(row: currFreeSpace.0, col: currFreeSpace.1)
 
                 
                 numShuffles += 1
             }
             else if(randMovementNum == 4){
-                var currFreeSpace = findFreeCell()
+                let currFreeSpace = findFreeCell()
                 randSpace(row: currFreeSpace.0, col: currFreeSpace.1)
 
                 

@@ -13,5 +13,6 @@ struct FifteenPuzzleApp: App {
         WindowGroup {
             ContentView()
         }
+        
     }
 }
