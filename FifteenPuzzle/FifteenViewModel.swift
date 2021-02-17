@@ -140,6 +140,10 @@ class FifteenViewModel: ObservableObject{
         var numShuffles:Int = 0
         //Shuffle the board 50-100 times.  In future versions of the program, this could be passed into the function
         //as an enum to represent 'easy', 'medium', or 'hard', and the user could set that enum in the main menu to choose how many times the board gets shuffled according to what's chosen.
+        
+        //NOTE: If you'd like to see how winning the game behaves,
+        //you can change this value to something small like 2 or 3 and quickly
+        //solve the puzzle
         let numTimesToShuffle:Int = Int.random(in: 50...100)
         
         //While the number of current shuffles is not the times to shuffle
