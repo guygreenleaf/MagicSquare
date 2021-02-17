@@ -6,7 +6,6 @@
 //
 
 
-//DADF#AD w/WCleanGR5 + reverb + echo
 
 import SwiftUI
 
@@ -16,14 +15,8 @@ struct ContentView: View {
     @State private var showStart = true
     @State private var showWin = false
     @ObservedObject var viewModel = FifteenViewModel()
-    //2d array to hold the gameboard
-    
+ 
     var body: some View {
-
-
-//        Image("Misty")
-//            .resizable()
-//            .edgesIgnoringSafeArea(.all)
 
         ZStack{
             if(!showStart){
@@ -116,9 +109,7 @@ struct ContentView: View {
                             showStart.toggle()
                         }
                     }
-//                    .withAnimation{
-//                        showStart.toggle()
-//                    }
+
 
                 
             }
@@ -153,14 +144,7 @@ struct ContentView: View {
                                 showStart.toggle()
                             }
                         }
-//                    Button("Return to menu"){
-//                        viewModel.userWon = false
-//
-//                        withAnimation{
-//                            showWin.toggle()
-//                            showStart.toggle()
-//                        }
-//                    }
+
                 }
                 .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
 
@@ -204,22 +188,15 @@ struct ContentView: View {
                     .onTapGesture {
                         viewModel.didTapCell(row: rowID , col: idx)
                         winChecker()
-                    
-                            
-                                           }
-                    
-                
-                    
-            }
-
-        }
-    }
+                                }
+                            }
+                        }
+                    }
     
     
     
     
     func buildCell(rowID: Int, columns: Int) -> some View {
-//        let cell:Int = viewModel.getCellNum(row: rowID, col: columns)
         let bigTest = viewModel.getCell(row: rowID, col: columns)
         return  ZStack{
 

@@ -18,32 +18,32 @@ class FifteenViewModel: ObservableObject{
     
     
     @Published var gameModel = FifteenModel()
-    
+    //viewmodel initializer
     init(){
         gameModel.createGameFor( rows: 4, columns: 4 )
     }
-
+    //get game size
     func gameSize() -> (rows: Int, columns: Int){
     return gameModel.gameSize()
     }
-    
+    //get the game cells
     func getGamePiece() -> Int{
         return gameModel.getGameCells
     }
-    
+    //check if the user taps a cell [used for testing]
     func didTapCell(row: Int, col: Int) {
         print("View: Tapped a \(gameModel.getCellType(row: row, col: col))")
         
     }
-    
+    //get a particular cell if need be
     func getCell(row: Int, col: Int) -> BoardCell{
         return gameModel.gameBoard[row][col]
     }
-    
+    //get the number of a cell
     func getCellNum(row:Int, col:Int)->Int{
         return gameModel.gameBoard[row][col].cellNumber
     }
-
+    //scan the board and find the current free cell
     func findFreeCell()->(Int, Int){
         for rows in 0...3 {
             for cols in 0...3 {
@@ -57,6 +57,11 @@ class FifteenViewModel: ObservableObject{
     return (0, 0)
     }
     
+    //Selects a number 1-4 to represent up, down, left, or right
+    //Then, checks if there's a space to move to.
+    //If there is, swaps the free cell with the adjacent cell.
+    //This makes it so that the maze is solvable, as it simulates human movement by being restricted to only swapping
+    //cells that are directly adjacent up, down, left, or right of the current free cell with the free cell!
     func randSpace(row:Int, col:Int){
         let randInt:Int = Int.random(in: 1...4)
             
@@ -115,6 +120,7 @@ class FifteenViewModel: ObservableObject{
             }
         }
     }
+    
     //Function that checks if the user has won the game every time the user moves
     func didWinGame()->Bool{
         
@@ -127,51 +133,29 @@ class FifteenViewModel: ObservableObject{
         return false
     }
     
+    
     func shuffleCells(){
         
-        
+        //var to represent the current number of shuffles
         var numShuffles:Int = 0
-        let numTimesToShuffle:Int = Int.random(in: 1...3)
+        //Shuffle the board 50-100 times.  In future versions of the program, this could be passed into the function
+        //as an enum to represent 'easy', 'medium', or 'hard', and the user could set that enum in the main menu to choose how many times the board gets shuffled according to what's chosen.
+        let numTimesToShuffle:Int = Int.random(in: 50...100)
         
+        //While the number of current shuffles is not the times to shuffle
         while numShuffles != numTimesToShuffle {
-            let randMovementNum = Int.random(in: 1...4)
-            
-            if(randMovementNum == 1){
+            //Find the current free space.
                 let currFreeSpace = findFreeCell()
+            //call randSpace function and pass the current free space to it
                 randSpace(row: currFreeSpace.0, col: currFreeSpace.1)
-                    
-                
-                
+            //increment the number of shuffles
                 numShuffles += 1
-            }
-            else if(randMovementNum == 2){
-                let currFreeSpace = findFreeCell()
-                randSpace(row: currFreeSpace.0, col: currFreeSpace.1)
-
-                
-                numShuffles += 1
-            }
-            
-            else if(randMovementNum == 3){
-                let currFreeSpace = findFreeCell()
-                randSpace(row: currFreeSpace.0, col: currFreeSpace.1)
-
-                
-                numShuffles += 1
-            }
-            else if(randMovementNum == 4){
-                let currFreeSpace = findFreeCell()
-                randSpace(row: currFreeSpace.0, col: currFreeSpace.1)
-
-                
-                numShuffles += 1
-            }
-            
         }
+        //Orient the game board to start keeping track of if the user has won or not
         setCellDidWinArray()
-            
     }
     
+    //Resets the game board to the initial position
     func resetCells(){
         let resetNum = 3
         var initNums = 1
@@ -186,6 +170,7 @@ class FifteenViewModel: ObservableObject{
             }
         }
     }
+    
     //When a cell is tapped, checks in all directions to see if a free cell is available to switch with
     func checkCell(row:Int, col:Int){
         if(col != 3){
