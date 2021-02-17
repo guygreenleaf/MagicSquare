@@ -11,9 +11,10 @@
 import SwiftUI
 
 struct ContentView: View {
-    
-    @State private var dragAmnt = CGSize.zero
-    
+
+
+    @State private var showStart = true
+    @State private var showWin = false
     @ObservedObject var viewModel = FifteenViewModel()
     //2d array to hold the gameboard
     
@@ -23,7 +24,11 @@ struct ContentView: View {
 //        Image("Misty")
 //            .resizable()
 //            .edgesIgnoringSafeArea(.all)
+
+        ZStack{
+            if(!showStart){
         VStack{
+
 
             buildGameView(rows: viewModel.gameSize().rows, columns: viewModel.gameSize().columns)
             .animation(.spring())
@@ -39,8 +44,9 @@ struct ContentView: View {
                 .border(Color.blue, width: 5)
                 .cornerRadius(10)
                 .onTapGesture {
-                    
+                    viewModel.isPlaying = true
                     viewModel.shuffleCells()
+                    
                 }
                 Text("Reset")
                     .fontWeight(.bold)
@@ -52,20 +58,136 @@ struct ContentView: View {
                     .cornerRadius(10)
                     .onTapGesture {
                         viewModel.resetCells()
+                        viewModel.isPlaying = false
+                        
                     }
+                
+            }
+            Text("Menu")
+                .fontWeight(.bold)
+                .font(.title)
+                .padding()
+                .background(Color.blue)
+                .foregroundColor(.white)
+                .border(Color.blue, width: 5)
+                .cornerRadius(10)
+                .onTapGesture {
+                    viewModel.resetCells()
+                    viewModel.isPlaying = false 
+                    withAnimation{
+                        showStart.toggle()
+                    }
+                }
+        }
+            
+        .background(Image("Misty"))
+        .transition(.slide)
+            }
+            if(showStart){
+                ZStack{
+                    Spacer()
+            VStack{
+                Text("Welcome!")
+                    .padding()
+                    .foregroundColor(Color.white)
+                    .scaleEffect(2)
+                Text("On the next screen, choose 'Shuffle' to start a game")
+                    .padding()
+                    .foregroundColor(Color.white)
+                    .scaleEffect(1)
+                Text("Move a cell into the empty space by tapping on the cell you want to move")
+                    .padding()
+                    .foregroundColor(Color.white)
+                    .scaleEffect(1)
+                Text("Order all cells from 1 to 15 in order to win the game")
+                    .padding()
+                    .foregroundColor(Color.white)
+                    .scaleEffect(1)
+                Text("Begin")
+                    .fontWeight(.bold)
+                    
+                    .padding()
+                    .background(Color.blue)
+                    .foregroundColor(.white)
+                    .border(Color.blue, width: 2)
+                    .cornerRadius(10)
+                    .onTapGesture {
+                        withAnimation{
+                            showStart.toggle()
+                        }
+                    }
+//                    .withAnimation{
+//                        showStart.toggle()
+//                    }
+
+                
+            }
+            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
+
+            .transition(.slide)
+            .background(Color.black)
+            .ignoresSafeArea()
+                }
+      
+            }
+            
+            if(showWin){
+                VStack{
+                    Text("You win!!!!")
+                        .padding()
+                        .foregroundColor(Color.white)
+                        .scaleEffect(2)
+                    Text("Return to menu")
+                        .fontWeight(.bold)
+                        
+                        .padding()
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .border(Color.blue, width: 2)
+                        .cornerRadius(10)
+                        .onTapGesture {
+                            viewModel.userWon = false
+
+                            withAnimation{
+                                showWin.toggle()
+                                showStart.toggle()
+                            }
+                        }
+//                    Button("Return to menu"){
+//                        viewModel.userWon = false
+//
+//                        withAnimation{
+//                            showWin.toggle()
+//                            showStart.toggle()
+//                        }
+//                    }
+                }
+                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
+
+                .background(Color.black)
+                .ignoresSafeArea()
+                .transition(.slide)
             }
         }
-        .background(Image("Misty"))
+        
+        
+
 
 
     }
     
+    func winChecker(){
+        if(viewModel.isPlaying && viewModel.didWinGame()){
+            viewModel.isPlaying = false
+            showWin = true
+        }
+    }
     
     func buildGameView(rows: Int, columns: Int) -> some View {
         return VStack {
             ForEach(0..<rows, content: { idx in
                 return buildGameRow(rowID: idx, columns: columns)
- 
+                
                 
             })
         }
@@ -75,13 +197,18 @@ struct ContentView: View {
     func buildGameRow(rowID: Int, columns: Int) -> some View {
         return HStack{
             ForEach(0..<columns) {idx in
+        
                 buildCell(rowID: rowID, columns: idx)
+                    
 
                     .onTapGesture {
                         viewModel.didTapCell(row: rowID , col: idx)
-                        
+                        winChecker()
+                    
                             
                                            }
+                    
+                
                     
             }
 
@@ -110,8 +237,9 @@ struct ContentView: View {
         
         .onTapGesture {
              viewModel.checkCell(row: rowID, col: columns)
-            
-            
+            viewModel.setCellDidWinArray()
+            winChecker()
+
         }
 
 

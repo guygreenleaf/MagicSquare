@@ -8,8 +8,12 @@
 import Foundation
 
 class FifteenViewModel: ObservableObject{
-    
-
+    //Keep track of if the user is playing the game
+     var isPlaying = false
+    //Keep track of if the user has won the game
+     var userWon = false
+    //Array to update to keep track of if the user has won the game
+    var arrWon:Array = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     //Bridge between model and view
     
     
@@ -18,7 +22,7 @@ class FifteenViewModel: ObservableObject{
     init(){
         gameModel.createGameFor( rows: 4, columns: 4 )
     }
-    
+
     func gameSize() -> (rows: Int, columns: Int){
     return gameModel.gameSize()
     }
@@ -39,12 +43,12 @@ class FifteenViewModel: ObservableObject{
     func getCellNum(row:Int, col:Int)->Int{
         return gameModel.gameBoard[row][col].cellNumber
     }
-    
+
     func findFreeCell()->(Int, Int){
         for rows in 0...3 {
             for cols in 0...3 {
                 let checkCell = gameModel.gameBoard[rows][cols].cellType
-                
+                    
                 if case .freeCell = checkCell {
                     return (rows, cols)
                 }
@@ -55,7 +59,7 @@ class FifteenViewModel: ObservableObject{
     
     func randSpace(row:Int, col:Int){
         let randInt:Int = Int.random(in: 1...4)
-        
+            
         if(randInt == 1 && row != 0){
             let checkUpCell = gameModel.gameBoard[row-1][col].cellType
             if case .fifteenCell = checkUpCell{
@@ -63,7 +67,9 @@ class FifteenViewModel: ObservableObject{
                 let cellToSwap = gameModel.gameBoard[row-1][col]
                 gameModel.gameBoard[row][col] = cellToSwap
                 gameModel.gameBoard[row-1][col] = currentFreeCell
+                    
             }
+            
         }
         else if(randInt == 2 && row != 3){
             let checkBottomCell = gameModel.gameBoard[row+1][col].cellType
@@ -90,17 +96,42 @@ class FifteenViewModel: ObservableObject{
                 let cellToSwap = gameModel.gameBoard[row][col+1]
                 gameModel.gameBoard[row][col] = cellToSwap
                 gameModel.gameBoard[row][col+1] = currentFreeCell
+                    
         }
+            
     }
         
+        
     }
+    
+    
+    //Sets the arrWon array to the current orientation of the game board
+    func setCellDidWinArray(){
+        var arrSpace = 0
+        for i in 0...3{
+            for j in 0...3{
+            arrWon[arrSpace] = gameModel.gameBoard[i][j].cellNumber
+                arrSpace += 1
+            }
+        }
+    }
+    //Function that checks if the user has won the game every time the user moves
+    func didWinGame()->Bool{
+        
 
+        if(arrWon[0] == 1 && arrWon[1] == 2 && arrWon[2] == 3 && arrWon[3] == 4 && arrWon[4] == 5
+            && arrWon[5] == 6 && arrWon[6] == 7 && arrWon[7] == 8 && arrWon[8] == 9 && arrWon[9] == 10
+            && arrWon[10] == 11 && arrWon[11] == 12 && arrWon[12] == 13 && arrWon[13] == 14 && arrWon[14] == 15 && arrWon[15] == 16){
+            return true
+        }
+        return false
+    }
     
     func shuffleCells(){
         
         
         var numShuffles:Int = 0
-        let numTimesToShuffle:Int = Int.random(in: 150...300)
+        let numTimesToShuffle:Int = Int.random(in: 1...3)
         
         while numShuffles != numTimesToShuffle {
             let randMovementNum = Int.random(in: 1...4)
@@ -108,6 +139,7 @@ class FifteenViewModel: ObservableObject{
             if(randMovementNum == 1){
                 let currFreeSpace = findFreeCell()
                 randSpace(row: currFreeSpace.0, col: currFreeSpace.1)
+                    
                 
                 
                 numShuffles += 1
@@ -136,18 +168,8 @@ class FifteenViewModel: ObservableObject{
             }
             
         }
-        
-        
-        
-        
-////        for shuffle in 0...numShuffles{
-////            let randNumber = Int.random(in: 0..<4)
-//            var oldSpace = gameModel.gameBoard[2][2]
-////            var newSpace = gameModel.gameBoard[3][3]
-//            gameModel.gameBoard[2][2] = gameModel.gameBoard[3][3]
-//        gameModel.gameBoard[3][3] = oldSpace
+        setCellDidWinArray()
             
-//        }
     }
     
     func resetCells(){
