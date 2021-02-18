@@ -56,8 +56,8 @@
 		9EDE979F25D04CF0005CB7B4 /* FifteenPuzzle */ = {
 			isa = PBXGroup;
 			children = (
-				9EDE97A025D04CF0005CB7B4 /* FifteenPuzzleApp.swift */,
 				9EDE97A225D04CF0005CB7B4 /* ContentView.swift */,
+				9EDE97A025D04CF0005CB7B4 /* FifteenPuzzleApp.swift */,
 				9EDE97A425D04CF1005CB7B4 /* Assets.xcassets */,
 				9EDE97A925D04CF1005CB7B4 /* Info.plist */,
 				9EDE97A625D04CF1005CB7B4 /* Preview Content */,

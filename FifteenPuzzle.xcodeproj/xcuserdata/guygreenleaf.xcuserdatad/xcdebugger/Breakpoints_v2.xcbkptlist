@@ -14,8 +14,8 @@
             filePath = "FifteenPuzzle/FifteenViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "179"
-            endingLineNumber = "179"
+            startingLineNumber = "177"
+            endingLineNumber = "177"
             landmarkName = "checkCell(row:col:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -183,8 +183,8 @@
             filePath = "FifteenPuzzle/FifteenViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "150"
-            endingLineNumber = "150"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
             landmarkName = "shuffleCells()"
             landmarkType = "7">
          </BreakpointContent>
@@ -199,8 +199,8 @@
             filePath = "FifteenPuzzle/FifteenViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "138"
-            endingLineNumber = "138"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
             landmarkName = "shuffleCells()"
             landmarkType = "7">
          </BreakpointContent>

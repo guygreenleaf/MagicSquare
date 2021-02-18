@@ -123,14 +123,12 @@ class FifteenViewModel: ObservableObject{
     
     //Function that checks if the user has won the game every time the user moves
     func didWinGame()->Bool{
-        
-
-        if(arrWon[0] == 1 && arrWon[1] == 2 && arrWon[2] == 3 && arrWon[3] == 4 && arrWon[4] == 5
-            && arrWon[5] == 6 && arrWon[6] == 7 && arrWon[7] == 8 && arrWon[8] == 9 && arrWon[9] == 10
-            && arrWon[10] == 11 && arrWon[11] == 12 && arrWon[12] == 13 && arrWon[13] == 14 && arrWon[14] == 15 && arrWon[15] == 16){
-            return true
+        for nums in 0...15{
+            if(arrWon[nums] != nums+1){
+                return false
+            }
         }
-        return false
+        return true
     }
     
     
@@ -144,7 +142,7 @@ class FifteenViewModel: ObservableObject{
         //NOTE: If you'd like to see how winning the game behaves,
         //you can change this value to something small like 2 or 3 and quickly
         //solve the puzzle
-        let numTimesToShuffle:Int = Int.random(in: 50...100)
+        let numTimesToShuffle:Int = Int.random(in: 1...3)
         
         //While the number of current shuffles is not the times to shuffle
         while numShuffles != numTimesToShuffle {
