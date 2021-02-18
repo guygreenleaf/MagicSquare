@@ -24,7 +24,7 @@ struct ContentView: View {
 
 
             buildGameView(rows: viewModel.gameSize().rows, columns: viewModel.gameSize().columns)
-            .animation(.spring())
+                .animation(Animation.easeInOut(duration: 0.4))
             .padding()
                 
             HStack{
@@ -216,6 +216,8 @@ struct ContentView: View {
              viewModel.checkCell(row: rowID, col: columns)
             viewModel.setCellDidWinArray()
             winChecker()
+            
+            
 
         }
 
