@@ -142,7 +142,7 @@ class FifteenViewModel: ObservableObject{
         //NOTE: If you'd like to see how winning the game behaves,
         //you can change this value to something small like 2 or 3 and quickly
         //solve the puzzle
-        let numTimesToShuffle:Int = Int.random(in: 1...3)
+        let numTimesToShuffle:Int = Int.random(in: 50...100)
         
         //While the number of current shuffles is not the times to shuffle
         while numShuffles != numTimesToShuffle {
